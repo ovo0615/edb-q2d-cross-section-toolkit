@@ -197,6 +197,38 @@ Load performance is part of acceptance too: on 2026 R1, opening a 2667-primitive
 from 209 s (with a degraded preview only) to 12.6 s at exact rendering, and rescanning while
 dragging a cut line from 24.3 s to 2.7 s.
 
+### Cross-validated against 3D TDR
+
+All of that compares the tool against itself. It cannot catch a systematic error in the
+extracted geometry, because such an error repeats identically and every gate still passes.
+
+So the same microstrip — SURFACE layer, 228.6 µm wide, referenced to L2, with a 29 mm
+straight run — was solved a second way with nothing in common: 3D full-wave in SIwave, two
+gap ports, swept to 20 GHz, converted to a TDR profile along the line. Six Q2D cuts along
+the same run give Z₀(x). Overlaid:
+
+![Cross-validation](docs/images/xval-03-overlay.png)
+
+| | Median | Range | Points |
+| --- | --- | --- | --- |
+| **Q2D** cross-section | **56.053 Ω** | 56.014 – 56.815 | 6 |
+| **SIwave → TDR** | **56.053 Ω** | 55.852 – 56.224 | 146 |
+
+The medians differ by **0.000%**, and five of the six cuts agree to within ±0.19%. For
+scale, the Hammerstad closed form gives 58.9 Ω for the same w/h — 5% above both numerical
+solutions.
+
+**The single disagreement is the finding.** At x ≈ 130 the Q2D cut reads 1.4% high: a via
+0.44 mm away punches an antipad through L2, the reference plane, which the matrices record
+as 0.7% less capacitance and 2.0% more inductance. TDR's spatial resolution here is
+1.42 mm and the antipad is 0.6–0.9 mm across, so **it structurally cannot see it** and
+averages it into the line. The division of labour between the two methods is therefore
+measured rather than asserted: TDR locates *where* along a real channel something is wrong;
+Q2D gives the exact impedance of a chosen cross-section.
+
+Full method, data and the four obstacles cleared along the way:
+[docs/cross-validation-tdr.md](docs/cross-validation-tdr.md).
+
 ## Technical collaboration
 
 Professional simulation services and technical engagements are conducted through
