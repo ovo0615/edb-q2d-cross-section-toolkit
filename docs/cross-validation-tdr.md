@@ -1,4 +1,4 @@
-# Cross-validation against 3D TDR / 與三維 TDR 的交叉驗證
+# Cross-validation against SIwave TDR / 與 SIwave TDR 的交叉驗證
 
 Provided by Jeff Hong 洪敬傑, Senior Technical Engineer, CAE,
 Taiwan Auto-Design Co. (TADC) 虎門科技股份有限公司.
@@ -18,18 +18,19 @@ every gate would still pass.
 那抓得到漂移，抓不到系統性偏差——如果萃取出來的截面每次都以同樣的方式錯，所有關卡照樣會過。
 
 So this document compares it against something that shares none of its assumptions: a
-**3D full-wave solve of the same physical trace**, converted to a time-domain reflection
-profile. Nothing is shared between the two paths — not the solver, not the dimensionality,
-not the port definition, not even the numerical domain.
+**2.5D hybrid electromagnetic solve of the same physical trace** in SIwave, converted to a
+time-domain reflection profile. Nothing is shared between the two paths — not the solver,
+not the formulation, not the port definition, not even the numerical domain.
 
-因此這份文件拿它去對一個**完全不共用假設**的方法：同一條實體走線的**三維全波求解**，
-再轉成時域反射剖面。兩條路徑之間沒有任何共用的東西——求解器不同、維度不同、
-激發定義不同，連數值域都不同。
+因此這份文件拿它去對一個**完全不共用假設**的方法：同一條實體走線在 SIwave 裡的
+**2.5D 混合電磁求解**，再轉成時域反射剖面。兩條路徑之間沒有任何共用的東西——求解器不同、
+公式化方式不同、激發定義不同，連數值域都不同。
 
 | | Q2D (this tool) | SIwave → TDR |
 | --- | --- | --- |
-| Solves | 2D quasi-TEM eigenvalue problem on one cross-section | 3D full-wave S-parameters of the real structure |
+| Solves | 2D quasi-TEM eigenvalue problem on one cross-section | 2.5D hybrid EM solve of the real structure, as S-parameters |
 | Domain | Frequency, one adaptive frequency | Frequency sweep → step response in time |
+| Solver class | Cross-section eigenvalue | Planar hybrid (SIwave is 2.5D, not 3D full-wave; HFSS is the 3D full-wave solver) |
 | Excitation | None; conductors and a reference | Two gap ports referenced to the plane |
 | Answers | Z₀ of an infinitely long line with that exact cross-section | Z seen looking into the structure at each point along it |
 | Blind to | Variation along the line, 3D effects | Anything shorter than `v·t_r/2` |

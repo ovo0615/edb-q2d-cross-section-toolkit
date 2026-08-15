@@ -197,13 +197,14 @@ Load performance is part of acceptance too: on 2026 R1, opening a 2667-primitive
 from 209 s (with a degraded preview only) to 12.6 s at exact rendering, and rescanning while
 dragging a cut line from 24.3 s to 2.7 s.
 
-### Cross-validated against 3D TDR
+### Cross-validated against SIwave TDR
 
 All of that compares the tool against itself. It cannot catch a systematic error in the
 extracted geometry, because such an error repeats identically and every gate still passes.
 
 So the same microstrip — SURFACE layer, 228.6 µm wide, referenced to L2, with a 29 mm
-straight run — was solved a second way with nothing in common: 3D full-wave in SIwave, two
+straight run — was solved a second way with nothing in common: a 2.5D hybrid solve in
+SIwave, two
 gap ports, swept to 20 GHz, converted to a TDR profile along the line. Six Q2D cuts along
 the same run give Z₀(x). Overlaid:
 
