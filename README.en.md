@@ -24,7 +24,7 @@ The hard part is **getting the cross-section into the 2D extractor**:
 
 - **Q2D cannot cut a cross-section out of HFSS 3D Layout or EDB.**
 - SIwave's *Export to 2D Extractor* generates an idealized cross-section from the
-  **stackup** — trace width, spacing, and the reference planes above and below. It cannot
+  **stackup**: trace width, spacing, and the reference planes above and below. It cannot
   represent what is actually at that location: locally voided planes, same-layer ground
   conductors on a signal layer, reference planes that exist only as narrow tongues, or
   padstack pads intersecting the cut.
@@ -43,7 +43,7 @@ Ansys SIwave training material rather than any customer's design.
 
 ### 1. Open a board
 
-8 conductor layers, 4608 primitives, rendered exactly — not a degraded approximation. The
+8 conductor layers, 4608 primitives, rendered exactly, not a degraded approximation. The
 SIwave-style layer panel on the right controls Fill / Show / Planes / Traces / Pads / Vias /
 Elements per layer.
 
@@ -55,7 +55,7 @@ Aiming at a 0.1 mm trace on a 200 mm board is not an interface problem, it is a 
 problem. Narrow attention to one stretch first; everything outside dims.
 
 The region is two things at once: **it sets the length of every cut line**, and its left and
-right edges are the **lateral truncation boundary** of the cross-section — too narrow cuts
+right edges are the **lateral truncation boundary** of the cross-section. Too narrow cuts
 off the return path and reads the impedance high.
 
 ![Working region](docs/images/gui-02-region.png)
@@ -65,7 +65,7 @@ off the return path and reads the impedance high.
 Choose a direction, click once inside the region, and both ends snap to it.
 
 **Cut lines are X or Y only.** An oblique cut inflates the apparent conductor width (+41% at
-45°) and reads the impedance low — and a mouse cannot draw a truly horizontal line. One
+45°) and reads the impedance low. A mouse cannot draw a truly horizontal line, either. One
 degree off is invisible to you and already wrong in the numbers. So the tool takes a
 coordinate, not an angle.
 
@@ -81,7 +81,7 @@ This is a WYSIWYG preview of **the Q2D model about to be built**, and the only p
 error can still be caught before a licence is spent.
 
 **Every stackup layer is listed**, and layers with no conductor on the cut are shown
-explicitly as empty — omitting empty layers is exactly how reference planes get misjudged.
+explicitly as empty: omitting empty layers is exactly how reference planes get misjudged.
 Yellow is a signal conductor, grey a reference conductor, dark blue dielectric; click any
 conductor to flip its role.
 
@@ -94,7 +94,7 @@ excluded or promoted to a reference.
 ### 5. Inspect the model before solving
 
 AEDT runs in the background with no window, so the Q2D model tab shows **AEDT's own picture
-of the model** — with no window to look at, this is the only direct evidence of what is
+of the model**. With no window to look at, this is the only direct evidence of what is
 really in Q2D. Anything wrong can be stopped immediately, and finished sections are kept.
 
 ![AEDT's picture of the model](docs/images/gui-05-q2d-model.png)
@@ -114,22 +114,22 @@ Five signal conductors against a merged `GND`, standard accuracy, 8 GHz, solved 
 
 The comparison table carries three extra columns on purpose: **conductor count**,
 **accuracy**, and **excluded nets**. A difference between two rows means a difference in the
-structure only when those three match — a different conductor count means the section
+structure only when those three match: a different conductor count means the section
 contains different things, one more conductor is one more coupling partner, and it turns the
 differential result from exact into approximate.
 
 The off-diagonal terms of the RLGC matrices are the coupling. Here only `ST_CLK_CNT4` and
 `ST_DELAY_STROBE` share significant mutual capacitance (−59.8 pF/m) and inductance
-(140 nH/m) while every other pairing is essentially zero — the matrix says those two traces
+(140 nH/m) while every other pairing is essentially zero. The matrix says those two traces
 are neighbours.
 
 ![RLGC matrices](docs/images/gui-08-rlgc.png)
 
 ### The interface
 
-Engineers grew up on desktop software, so alongside the ordered step panel there is a
-File / Run / View / Help menu bar with `Ctrl+O`, `Ctrl+S`, `F5` and `Esc`. Nothing is
-reachable only from the menu, and unavailable entries grey out rather than disappear.
+Alongside the ordered step panel there is a File / Run / View / Help menu bar
+with `Ctrl+O`, `Ctrl+S`, `F5` and `Esc`. Nothing is reachable only from the
+menu, and unavailable entries grey out rather than disappear.
 
 ![Menu bar](docs/images/gui-09-menu.png)
 
@@ -160,7 +160,7 @@ npm run dev
 ```
 
 The interface opens at `http://localhost:5180` and the layout, menus and dialogs all work.
-**Anything that needs data will fail**, though — open, scan and solve all call `/api`, and
+**Anything that needs data will fail**, though: open, scan and solve all call `/api`, and
 this repository has no back end. The screenshots above show the real behaviour.
 
 ---
@@ -178,7 +178,7 @@ Private: the back end, roughly 3,600 lines of Python.
 | Build and solve | calls `/api/build` | builds and solves the model in Q2D Extractor via **pyaedt** |
 | Live log | `WebSocket /ws` | streamed from a separate worker process |
 
-In other words, **the front end alone cannot import a board** — it never touches board data;
+In other words, **the front end alone cannot import a board**: it never touches board data;
 it is a rendering and interaction layer. Solving additionally needs a local Ansys Electronics
 Desktop installation and a Q2D Extractor licence, which a browser cannot provide.
 
@@ -187,7 +187,7 @@ license-server configuration.
 
 ## Verification
 
-Two cross-sections — a gold finger and a routed trace — were re-run end to end on both
+Two cross-sections (a gold finger and a routed trace) were re-run end to end on both
 **2024 R2** and **2026 R1** and compared item by item against baselines (Zdiff, Z_odd,
 Z_even, C11, C12, L11, L12) with a ±2% threshold. The largest measured deviation was
 **0.04%**; Zdiff differed by 0.0002% across versions, and both versions extracted identical
