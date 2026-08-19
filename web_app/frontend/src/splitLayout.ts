@@ -8,8 +8,6 @@
 // 它的 defaultSizes 參數單位是「像素」——把 [30, 70] 餵進去，Allotment 會以為
 // 整個容器只有 100 px；側欄的 minSize 佔掉 280 之後，右邊那格就是 0 寬，
 // 畫布整個消失。這個錯誤在畫面上看起來像「圖層面板跑到下面去了」。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 const DEFAULT_MAIN = 30
 const DEFAULT_LOG = 80
 const MAIN_KEY = 'edb2q2d.split.main.v2'

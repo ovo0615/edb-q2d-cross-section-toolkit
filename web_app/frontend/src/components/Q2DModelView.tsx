@@ -8,8 +8,6 @@
 // 就是「Q2D 裡真的有什麼」的唯一直接證據——示意圖是我們自己畫的，畫錯了也看不出來。
 // 但它是等比例的：35 µm 的銅箔在 0.8 mm 的疊構上只有幾個像素，量不了尺寸。
 // 要看層厚與線寬請切到示意圖，那裡縱向被刻意放大，並且標明比例不相等。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useMemo, useRef, useState } from 'react'
 import type { Q2DGeometry, Q2DRect } from '../api'
 

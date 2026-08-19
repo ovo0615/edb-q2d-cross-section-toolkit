@@ -1,10 +1,5 @@
 # Cross-validation against SIwave TDR / 與 SIwave TDR 的交叉驗證
 
-Provided by Jeff Hong 洪敬傑, Senior Technical Engineer, CAE,
-Taiwan Auto-Design Co. (TADC) 虎門科技股份有限公司.
-
-此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供。
-
 ---
 
 ## Why this comparison is worth making / 為什麼值得做這個比較

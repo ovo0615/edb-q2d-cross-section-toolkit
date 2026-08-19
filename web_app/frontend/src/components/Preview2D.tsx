@@ -1,8 +1,6 @@
 // 2D Layout 預覽（HTML5 Canvas，SIwave 風格圖層面板）
 // 渲染引擎沿用 PCB SI 3D Simulation Toolkit 驗證過的作法，並加上本工具特有的
 // 任意角度 CutLine：命中測試從「距離某軸」改為「距離某直線」，才能處理斜向走線。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import type { Primitive, PreviewData } from '../api'
 

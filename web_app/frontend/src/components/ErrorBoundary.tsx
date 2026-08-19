@@ -1,6 +1,5 @@
 // Canvas 渲染若因異常圖元（NaN 座標、空頂點陣列）拋例外，整個 React 樹會白屏，
 // 使用者連日誌都看不到。包起來，壞掉時至少還能顯示錯誤訊息。
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React from 'react'
 
 interface State { error: Error | null }

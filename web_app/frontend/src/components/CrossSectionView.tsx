@@ -2,8 +2,6 @@
 //
 // 這是唯一能在花掉一次求解之前抓到錯誤的地方。所有疊構層一律列出，
 // 在切線上沒有導體的層必須明顯留白——把空層省略掉，正是參考面被誤判的成因。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useMemo, useRef, useState } from 'react'
 import type { CrossSectionData, SafetyItem, Segment } from '../api'
 
