@@ -3,8 +3,6 @@
 // 並排是重點。這個工具最常見的用法是對照——同一個位置，有干擾源與沒有干擾源；
 // 或同一條線，兩個不同的工作範圍。把數字分散在不同畫面上，比較就得靠記憶，
 // 而記憶會出錯。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React from 'react'
 import type { BuildResult, PairResult } from '../api'
 

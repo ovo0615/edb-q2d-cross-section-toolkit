@@ -3,7 +3,6 @@
 // Layout、結構剖面、Q2D 模型、結果各自需要整個畫面：把它們塞進同一個上下分割，
 // 每一個都只剩一半高度，而它們之間本來就不需要同時看見。
 //
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Allotment } from 'allotment'
 import 'allotment/dist/style.css'
@@ -387,8 +386,7 @@ export default function App() {
           <div>
             <h1>EDB to Q2D</h1>
             <p className="sub">
-              在 Layout 上指定截面，萃取實際幾何並求解特徵阻抗 ·
-              此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
+              在 Layout 上指定截面，萃取實際幾何並求解特徵阻抗
             </p>
           </div>
         </div>

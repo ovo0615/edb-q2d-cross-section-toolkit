@@ -6,8 +6,6 @@
 //
 // 沒有可用的項目一律 disabled 而不是隱藏：位置固定，使用者才記得住東西在哪裡；
 // 消失的項目會讓人以為這個版本沒有這個功能。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useEffect, useRef, useState } from 'react'
 
 export interface MenuItem {

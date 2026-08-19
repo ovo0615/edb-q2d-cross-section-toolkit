@@ -9,8 +9,6 @@
 //
 // 關掉一條 net 的語意是「這塊銅箔不存在」——見
 // docs/adr/0001-excluded-nets-become-dielectric.md。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useMemo, useRef, useState } from 'react'
 
 interface Props {
@@ -83,7 +81,6 @@ export default function NetPanel({
     const keep = signalNets.filter((n) => !excludedSet.has(n))
     const body = ['# EDB to Q2D 訊號清單（列出的是要納入模型的訊號 net）',
                   '# 參考導體不在此清單中，它們一律納入。',
-                  '# 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供',
                   ...keep].join('\r\n')
     // BOM：記事本與 Excel 開 UTF-8 純文字時，沒有 BOM 會把中文註解顯示成亂碼。
     const blob = new Blob(['﻿' + body], { type: 'text/plain;charset=utf-8' })

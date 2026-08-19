@@ -3,8 +3,6 @@
 // 內容只寫工具真正的行為與限制，尤其是那些從介面上看不出來、但會影響數字的事
 // （切線必須是軸向的、參考網路會合併、AEDT 在背景跑）。寫成一般的說明文只會被略過；
 // 寫成「不知道就會算錯」的清單才有人看。
-//
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 import React, { useEffect } from 'react'
 
 export type HelpTopic = 'guide' | 'about'
@@ -80,7 +78,6 @@ export default function HelpDialog({ topic, version, onClose }: Props) {
                 <tr><th>目前 AEDT 版本</th><td>{version}</td></tr>
                 <tr><th>求解器</th><td>Ansys Q2D Extractor（背景執行）</td></tr>
                 <tr><th>資料處理位置</th><td>全部在本機，不會上傳板檔或求解結果</td></tr>
-                <tr><th>提供者</th><td>虎門科技資深技術工程師 Jeff Hong 洪敬傑</td></tr>
               </tbody>
             </table>
             <p className="hint">

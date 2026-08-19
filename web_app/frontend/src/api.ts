@@ -1,6 +1,5 @@
 // 與 FastAPI 後端溝通。長任務走 job + WebSocket 串流日誌，
 // 並保留 REST 輪詢作為狀態的真實來源——socket 斷線不該讓結果消失。
-// 此工具由虎門科技資深技術工程師 Jeff Hong 洪敬傑提供
 export interface Primitive {
   kind: 'polygon' | 'path' | 'rect' | 'circle' | 'comp' | 'port'
   net?: string
